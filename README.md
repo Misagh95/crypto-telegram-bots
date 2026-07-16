@@ -9,7 +9,8 @@ A collection of cryptocurrency Telegram bots — price alerts, Fear & Greed inde
 | `/price bitcoin ethereum` | Price Alert | Real-time crypto prices from CoinGecko |
 | `/alert bitcoin above 70000` | Price Alert | Check if price is above/below a target |
 | `/fng` | Fear & Greed | Market sentiment index (last 7 days) |
-| `/news 5` | News Aggregator | Latest crypto news |
+| `/news 5` | News Aggregator | Latest crypto news (EN) |
+| `/fnews 5` | News Aggregator | آخرین اخبار کریپتو (فارسی) |
 
 ## Setup
 

@@ -14,7 +14,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "*😱 Fear & Greed Bot*\n"
         "  /fng — Show Fear & Greed Index\n\n"
         "*📰 News Bot*\n"
-        "  /news 5 — Latest crypto news\n\n"
+        "  /news 5 — Latest crypto news (EN)\n"
+        "  /fnews 5 — آخرین اخبار کریپتو (فارسی)\n\n"
         "Source: https://github.com/Misagh95/crypto-telegram-bots",
         parse_mode="Markdown",
         disable_web_page_preview=True,
