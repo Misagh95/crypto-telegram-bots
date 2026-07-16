@@ -1,22 +1,34 @@
+import os
 import sys
+import logging
 
-from crypto_tracker.client import CoinGeckoClient
-from crypto_tracker.cli import display_prices
+from dotenv import load_dotenv
+from telegram.ext import ApplicationBuilder
 
-DEFAULT_COINS = ["bitcoin", "ethereum", "tether", "ripple", "cardano",
-                 "solana", "dogecoin", "polkadot", "litecoin", "chainlink"]
+from bots import fear_greed, news, price_alert, start
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+)
+
+load_dotenv()
 
 
 def main():
-    coins = sys.argv[1:] if len(sys.argv) > 1 else DEFAULT_COINS
-
-    client = CoinGeckoClient()
-    try:
-        prices = client.get_prices(coins)
-        display_prices(prices)
-    except Exception as e:
-        print(f"Error fetching prices: {e}")
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    if not token or token == "your_token_here":
+        print("ERROR: TELEGRAM_BOT_TOKEN not set in .env file")
         sys.exit(1)
+
+    app = ApplicationBuilder().token(token).build()
+
+    for module in [start, price_alert, fear_greed, news]:
+        for handler in module.get_handlers():
+            app.add_handler(handler)
+
+    print("Bot is running...")
+    app.run_polling()
 
 
 if __name__ == "__main__":
