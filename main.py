@@ -5,7 +5,7 @@ import logging
 from dotenv import load_dotenv
 from telegram.ext import ApplicationBuilder
 
-from bots import fear_greed, news, price_alert, start
+from bots import ai, fear_greed, gas, news, portfolio, price_alert, start, whale
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -23,7 +23,7 @@ def main():
 
     app = ApplicationBuilder().token(token).build()
 
-    for module in [start, price_alert, fear_greed, news]:
+    for module in [start, price_alert, fear_greed, news, whale, gas, portfolio, ai]:
         for handler in module.get_handlers():
             app.add_handler(handler)
 

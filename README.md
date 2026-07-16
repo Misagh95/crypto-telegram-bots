@@ -1,41 +1,34 @@
-# Crypto Telegram Bots
+# Crypto Telegram Bot
 
-A collection of cryptocurrency Telegram bots — price alerts, Fear & Greed index, and news.
+Multi-feature cryptocurrency Telegram bot.
 
-## Bots
+## Commands
 
-| Command | Bot | Description |
-|---------|-----|-------------|
-| `/price bitcoin ethereum` | Price Alert | Real-time crypto prices from CoinGecko |
-| `/alert bitcoin above 70000` | Price Alert | Check if price is above/below a target |
-| `/fng` | Fear & Greed | Market sentiment index (last 7 days) |
-| `/news 5` | News Aggregator | Latest crypto news (EN) |
-| `/fnews 5` | News Aggregator | آخرین اخبار کریپتو (فارسی) |
+| Command | Description |
+|---------|-------------|
+| `/price bitcoin eth` | Real-time prices |
+| `/alert bitcoin above 70000` | Price alert |
+| `/fng` | Fear & Greed Index |
+| `/news 5` | Latest crypto news (EN) |
+| `/fnews 5` | آخرین اخبار کریپتو (فارسی) |
+| `/whale` | Recent whale transactions |
+| `/gas` | Ethereum gas fees |
+| `/add bitcoin 0.5` | Add coin to portfolio |
+| `/remove bitcoin` | Remove coin from portfolio |
+| `/portfolio` | View your portfolio |
+| `/ask What is DeFi?` | AI assistant (needs OpenAI key) |
 
 ## Setup
 
 ```bash
-git clone https://github.com/Misagh95/crypto-telegram-bots.git
-cd crypto-telegram-bots
 pip install -r requirements.txt
-```
-
-Create a `.env` file:
-
-```
-TELEGRAM_BOT_TOKEN=your_token_here
-```
-
-Get the token from [@BotFather](https://t.me/BotFather) on Telegram.
-
-## Run
-
-```bash
+cp .env.example .env
+# Fill in your API keys
 python main.py
 ```
 
-## API
+## APIs
 
-- [CoinGecko](https://www.coingecko.com/en/api) — free, no key
-- [Alternative.me](https://alternative.me/crypto/fear-and-greed-index) — free, no key
-- [CryptoCompare](https://min-api.cryptocompare.com/) — free, no key (optional: NewsAPI)
+- [CoinGecko](https://www.coingecko.com/en/api) — prices (free tier)
+- [Etherscan](https://etherscan.io/myapikey) — whale alerts & gas (free)
+- [OpenAI](https://platform.openai.com/api-keys) — AI assistant (paid)

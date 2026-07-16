@@ -6,17 +6,16 @@ from telegram.ext import CommandHandler, ContextTypes, filters
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "🤖 *Crypto Telegram Bots*\n\n"
-        "Available commands:\n\n"
-        "*💰 Price Alert Bot*\n"
-        "  /price bitcoin ethereum — Get current prices\n"
-        "  /alert bitcoin above 70000 — Set price alert\n\n"
-        "*😱 Fear & Greed Bot*\n"
-        "  /fng — Show Fear & Greed Index\n\n"
-        "*📰 News Bot*\n"
-        "  /news 5 — Latest crypto news (EN)\n"
-        "  /fnews 5 — آخرین اخبار کریپتو (فارسی)\n\n"
-        "Source: https://github.com/Misagh95/crypto-telegram-bots",
+        "🤖 *Crypto Telegram Bot*\n\n"
+        "*💰 Price* — `/price bitcoin eth`\n"
+        "*⚠️ Alert* — `/alert bitcoin above 70000`\n"
+        "*😱 Fear & Greed* — `/fng`\n"
+        "*📰 News* — `/news 5` (EN) | `/fnews 5` (فارسی)\n"
+        "*🐋 Whale Alert* — `/whale`\n"
+        "*⛽ Gas Fee* — `/gas`\n"
+        "*💼 Portfolio* — `/add bitcoin 0.5` → `/portfolio`\n"
+        "*🤖 AI Assistant* — `/ask What is Ethereum?`\n\n"
+        "[GitHub](https://github.com/Misagh95/crypto-telegram-bots)",
         parse_mode="Markdown",
         disable_web_page_preview=True,
     )
