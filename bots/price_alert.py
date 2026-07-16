@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import requests
@@ -7,6 +8,7 @@ from telegram.ext import CommandHandler, ContextTypes, filters
 from . import coins
 
 COINGECKO_URL = "https://api.coingecko.com/api/v3/simple/price"
+CG_API_KEY = os.getenv("COINGECKO_API_KEY")
 
 
 async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -22,6 +24,8 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     ids = ",".join(c.lower() for c in args)
     params = {"ids": ids, "vs_currencies": "usd", "include_24hr_change": "true"}
+    if CG_API_KEY:
+        params["x_cg_demo_api_key"] = CG_API_KEY
 
     try:
         res = requests.get(COINGECKO_URL, params=params, timeout=10)
@@ -68,6 +72,8 @@ async def alert(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     params = {"ids": coin, "vs_currencies": "usd"}
+    if CG_API_KEY:
+        params["x_cg_demo_api_key"] = CG_API_KEY
     try:
         res = requests.get(COINGECKO_URL, params=params, timeout=10)
         res.raise_for_status()
